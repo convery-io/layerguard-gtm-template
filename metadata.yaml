@@ -1,5 +1,5 @@
 homepage: "https://layerguard.io"
 documentation: "https://buyldoo.gitbook.io/layerguard"
 versions:
-  - sha: PLACEHOLDER_FILL_AFTER_FIRST_COMMIT
+  - sha: 2f23ded21764ab07812deca6b84095d14d9efd18
     changeNotes: Initial release. DataLayer event validation, bot detection, real-time anomaly alerts.
