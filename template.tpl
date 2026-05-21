@@ -1,4 +1,4 @@
-﻿___INFO___
+___INFO___
 
 {
   "type": "TAG",
@@ -164,7 +164,8 @@ ___TEMPLATE_PARAMETERS___
             "paramValue": "send",
             "type": "NOT_EQUALS"
           }
-        ]
+        ],
+        "alwaysInSummary": true
       },
       {
         "type": "CHECKBOX",
@@ -179,7 +180,8 @@ ___TEMPLATE_PARAMETERS___
             "type": "EQUALS"
           }
         ],
-        "defaultValue": false
+        "defaultValue": false,
+        "alwaysInSummary": true
       },
       {
         "type": "CHECKBOX",
@@ -194,7 +196,8 @@ ___TEMPLATE_PARAMETERS___
             "type": "EQUALS"
           }
         ],
-        "defaultValue": false
+        "defaultValue": false,
+        "alwaysInSummary": true
       },
       {
         "type": "TEXT",
@@ -209,12 +212,29 @@ ___TEMPLATE_PARAMETERS___
         "help": "The threshold to consider user as a bot (from 0 to 100).",
         "enablingConditions": [
           {
-            "paramName": "flag_malicious_bots",
+            "paramName": "anti_bot",
             "paramValue": true,
             "type": "EQUALS"
           }
         ],
-        "defaultValue": 70
+        "defaultValue": 80,
+        "alwaysInSummary": true
+      },
+      {
+        "type": "CHECKBOX",
+        "name": "network_capture",
+        "checkboxText": "Network capture",
+        "simpleValueType": true,
+        "alwaysInSummary": true,
+        "help": "If \u003cb\u003etrue\u003c/b\u003e, authorizes LayerGuard saving IP and ASN for detected bot events.",
+        "defaultValue": false,
+        "enablingConditions": [
+          {
+            "paramName": "action",
+            "paramValue": "load",
+            "type": "EQUALS"
+          }
+        ]
       }
     ],
     "enablingConditions": [
@@ -367,6 +387,7 @@ const init = () => {
     filter_known_bots: !data.filter_known_bots,
     flag_malicious_bots: data.flag_malicious_bots,
     bot_threshold: data.bot_threshold,
+    network_capture: data.network_capture,
     anonymize: data.anonymizeTerms ? data.anonymizeTerms.split(',').map(term => term.trim()) : []
   });
 };
